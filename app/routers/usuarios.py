@@ -27,7 +27,7 @@ def listar_todos_usuarios():
 
 #Endpoint PUT para alterar dados de um usuário específico, de menos o username
 @router.put("/editar/{username}")
-def editar_usuario(username: str, usuario: UsuarioUpdate, dados: dict = Body(...)):
+def editar_usuario(username: str, dados: dict = Body(...)):
     if "username" in dados:
         raise HTTPException(status_code=400, detail="Não é permitido alterar o username.")
     usuario = usuarios.find_one({"username": username})
